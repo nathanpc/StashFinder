@@ -242,6 +242,21 @@ Private Sub cmdAdd_Click()
         
         i = i + 1
     Wend
+    
+    ' Make sure the ListBox can display its new contents.
+    AddHorizontalScrollToListBox lstToCopy
+End Sub
+
+' Copies over all of the files to the destination.
+Private Sub cmdCopyFiles_Click()
+    ' Check if the destination location is set.
+    If txtDestination.Text = "" Then
+        MsgBox "No destination location was set.", vbOKOnly + vbCritical, _
+            "No Destination Set"
+        Exit Sub
+    End If
+    
+    ' TODO: Everything.
 End Sub
 
 ' Removes the selected items from the To Copy list.
@@ -282,6 +297,11 @@ Private Sub cmdBrowseSource_Click()
         Exit Sub
     End If
     
+    ' Clear the lists.
+    lstFound.Clear
+    lstToCopy.Clear
+    
+    ' Set the source path.
     txtSource.Text = strPath
 End Sub
 
