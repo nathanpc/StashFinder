@@ -55,7 +55,6 @@ Begin VB.Form frmMain
       Width           =   6975
       Begin VB.CheckBox chkPreserveStructure 
          Caption         =   "Preserve Directory Structure"
-         Enabled         =   0   'False
          Height          =   255
          Left            =   120
          TabIndex        =   17
@@ -257,6 +256,9 @@ End Sub
 
 ' Copies over all of the files to the destination.
 Private Sub cmdCopyFiles_Click()
+    Dim idxFile As Integer
+    Dim numCopied As Integer
+
     ' Check if the destination location is set.
     If txtDestination.Text = "" Then
         MsgBox "No destination location was set.", vbOKOnly + vbCritical, _
@@ -264,7 +266,17 @@ Private Sub cmdCopyFiles_Click()
         Exit Sub
     End If
     
-    ' TODO: Everything.
+    ' Go through the To Copy list copying files.
+    For idxFile = 0 To lstToCopy.ListCount - 1
+        ' Copy the file.
+        CopyFile lstToCopy.List(idxFile), txtSource.Text, txtDestination.Text, _
+            chkPreserveStructure
+        numCopied = numCopied + 1
+    Next
+    
+    ' Finished message.
+    MsgBox "Copied" & Str(numCopied) & " files to " & txtDestination.Text, _
+        vbOKOnly + vbInformation, "Finished Copying Files"
 End Sub
 
 ' Removes the selected items from the To Copy list.

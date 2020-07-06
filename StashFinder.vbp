@@ -6,6 +6,7 @@ Form=Forms\frmMain.frm
 Module=modOpenFolder; Modules\modOpenFolder.bas
 Module=modFileSearch; Modules\modFileSearch.bas
 Module=modInterfaceUtilities; Modules\modInterfaceUtilities.bas
+Module=modCopying; Modules\modCopying.bas
 IconForm="frmMain"
 Startup="frmMain"
 Command32=""
