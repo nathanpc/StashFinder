@@ -1,6 +1,6 @@
 # Stash Finder
 
-A simple utility to help you sift through a recently aquired hoarding stash
+A simple utility to help you sift through a recently acquired hoarding stash
 and move your precious hoarded files into a more organized directory.
 
 This tool was designed with data hoarders in mind.
