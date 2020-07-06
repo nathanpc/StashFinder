@@ -109,6 +109,14 @@ Begin VB.Form frmMain
       TabIndex        =   0
       Top             =   0
       Width           =   6975
+      Begin VB.CheckBox chkCaseSensitive 
+         Caption         =   "Case Sensitive"
+         Height          =   255
+         Left            =   1920
+         TabIndex        =   20
+         Top             =   840
+         Width           =   1455
+      End
       Begin VB.ListBox lstExtensions 
          Height          =   645
          Left            =   5520
