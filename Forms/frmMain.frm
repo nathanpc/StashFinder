@@ -12,6 +12,22 @@ Begin VB.Form frmMain
    ScaleHeight     =   7575
    ScaleWidth      =   8670
    StartUpPosition =   3  'Windows Default
+   Begin VB.CommandButton cmdRemoveAll 
+      Caption         =   "<<"
+      Height          =   375
+      Left            =   4080
+      TabIndex        =   22
+      Top             =   4560
+      Width           =   495
+   End
+   Begin VB.CommandButton cmdAddAll 
+      Caption         =   ">>"
+      Height          =   375
+      Left            =   4080
+      TabIndex        =   21
+      Top             =   2760
+      Width           =   495
+   End
    Begin VB.ListBox lstToCopy 
       Height          =   4350
       Left            =   4680
@@ -251,6 +267,24 @@ Private Sub cmdAdd_Click()
     Wend
     
     ' Make sure the ListBox can display its new contents.
+    AddHorizontalScrollToListBox lstFound
+    AddHorizontalScrollToListBox lstToCopy
+End Sub
+
+' Add all the files from the Found list to the To Copy list.
+Private Sub cmdAddAll_Click()
+    Dim i As Integer
+    
+    ' Push all the Found items to the To Copy list.
+    For i = 0 To lstFound.ListCount - 1
+        lstToCopy.AddItem lstFound.List(i)
+    Next
+    
+    ' Clear the Found list.
+    lstFound.Clear
+    
+    ' Make sure the lists have a nice horizontal scrollbar if needed.
+    AddHorizontalScrollToListBox lstFound
     AddHorizontalScrollToListBox lstToCopy
 End Sub
 
@@ -305,6 +339,10 @@ Private Sub cmdRemove_Click()
         
         i = i + 1
     Wend
+    
+    ' Make sure the ListBox can display its new contents.
+    AddHorizontalScrollToListBox lstFound
+    AddHorizontalScrollToListBox lstToCopy
 End Sub
 
 ' Browse for a source location.
@@ -336,6 +374,23 @@ Private Sub cmdBrowseDestination_Click()
     End If
     
     txtDestination.Text = strPath
+End Sub
+
+' Move all the items from the To Copy list to the Found list.
+Private Sub cmdRemoveAll_Click()
+    Dim i As Integer
+    
+    ' Push all the To Copy items to the Found list.
+    For i = 0 To lstToCopy.ListCount - 1
+        lstFound.AddItem lstToCopy.List(i)
+    Next
+    
+    ' Clear the To Copy list.
+    lstToCopy.Clear
+    
+    ' Make sure the lists have a nice horizontal scrollbar if needed.
+    AddHorizontalScrollToListBox lstFound
+    AddHorizontalScrollToListBox lstToCopy
 End Sub
 
 ' Search the source directory for files.
