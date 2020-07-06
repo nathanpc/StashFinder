@@ -5,6 +5,8 @@ and move your precious hoarded files into a more organized directory.
 
 This tool was designed with data hoarders in mind.
 
+![Main Screenshot](/Screenshots/2020-07-06.png)
+
 
 ## Why VB6
 
