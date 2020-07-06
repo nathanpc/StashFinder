@@ -15,7 +15,7 @@ Begin VB.Form frmMain
    Begin VB.ListBox lstToCopy 
       Height          =   4350
       Left            =   4680
-      MultiSelect     =   1  'Simple
+      MultiSelect     =   2  'Extended
       Sorted          =   -1  'True
       TabIndex        =   19
       Top             =   1680
@@ -24,7 +24,7 @@ Begin VB.Form frmMain
    Begin VB.ListBox lstFound 
       Height          =   4350
       Left            =   120
-      MultiSelect     =   1  'Simple
+      MultiSelect     =   2  'Extended
       Sorted          =   -1  'True
       TabIndex        =   18
       Top             =   1680
@@ -215,6 +215,62 @@ Attribute VB_Exposed = False
 ''' Author: Nathan Campos <nathan@innoveworkshop.com>
 
 Option Explicit
+
+' Adds selected items from the Found list to the To Copy list.
+Private Sub cmdAdd_Click()
+    Dim i As Long
+    Dim idxLast As Long
+    
+    ' Check if we only have one item selected.
+    If lstFound.SelCount = 1 Then
+        lstToCopy.AddItem lstFound.Text
+        lstFound.RemoveItem lstFound.ListIndex
+        Exit Sub
+    End If
+    
+    ' Go through the list looking for the selected items.
+    i = 0
+    idxLast = lstFound.ListCount
+    While i < idxLast
+        If lstFound.Selected(i) Then
+            lstToCopy.AddItem lstFound.List(i)
+            lstFound.RemoveItem i
+            
+            i = i - 1
+            idxLast = idxLast - 1
+        End If
+        
+        i = i + 1
+    Wend
+End Sub
+
+' Removes the selected items from the To Copy list.
+Private Sub cmdRemove_Click()
+    Dim i As Long
+    Dim idxLast As Long
+    
+    ' Check if we only have one item selected.
+    If lstToCopy.SelCount = 1 Then
+        lstFound.AddItem lstToCopy.Text
+        lstToCopy.RemoveItem lstToCopy.ListIndex
+        Exit Sub
+    End If
+    
+    ' Go through the list looking for the selected items.
+    i = 0
+    idxLast = lstToCopy.ListCount
+    While i < idxLast
+        If lstToCopy.Selected(i) Then
+            lstFound.AddItem lstToCopy.List(i)
+            lstToCopy.RemoveItem i
+            
+            i = i - 1
+            idxLast = idxLast - 1
+        End If
+        
+        i = i + 1
+    Wend
+End Sub
 
 ' Browse for a source location.
 Private Sub cmdBrowseSource_Click()
