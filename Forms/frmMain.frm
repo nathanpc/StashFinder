@@ -119,10 +119,10 @@ Begin VB.Form frmMain
       End
       Begin VB.ListBox lstExtensions 
          Height          =   645
-         Left            =   5520
+         Left            =   6000
          TabIndex        =   10
          Top             =   480
-         Width           =   1335
+         Width           =   855
       End
       Begin VB.CheckBox chkRecursive 
          Caption         =   "Recursive Search"
@@ -136,7 +136,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdBrowseSource 
          Caption         =   "..."
          Height          =   315
-         Left            =   4920
+         Left            =   5400
          TabIndex        =   7
          Top             =   480
          Width           =   375
@@ -146,12 +146,12 @@ Begin VB.Form frmMain
          Left            =   120
          TabIndex        =   6
          Top             =   480
-         Width           =   4695
+         Width           =   5175
       End
       Begin VB.Label Label4 
          Caption         =   "Extensions:"
          Height          =   255
-         Left            =   5520
+         Left            =   6000
          TabIndex        =   9
          Top             =   240
          Width           =   855
