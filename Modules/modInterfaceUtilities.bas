@@ -16,7 +16,7 @@ Const LB_SETHORIZONTALEXTENT = &H194
 
 ' Add a horizontal scrollbar to a ListBox.
 Public Sub AddHorizontalScrollToListBox(lst As ListBox)
-    Dim i As Integer
+    Dim i As Long
     Dim lngNewLength As Long
     Dim lngMaxLength As Long
     
