@@ -273,7 +273,7 @@ End Sub
 
 ' Add all the files from the Found list to the To Copy list.
 Private Sub cmdAddAll_Click()
-    Dim i As Integer
+    Dim i As Long
     
     ' Push all the Found items to the To Copy list.
     For i = 0 To lstFound.ListCount - 1
@@ -290,8 +290,7 @@ End Sub
 
 ' Copies over all of the files to the destination.
 Private Sub cmdCopyFiles_Click()
-    Dim idxFile As Integer
-    Dim numCopied As Integer
+    Dim numCopied As Long
 
     ' Check if the destination location is set.
     If txtDestination.Text = "" Then
@@ -301,12 +300,15 @@ Private Sub cmdCopyFiles_Click()
     End If
     
     ' Go through the To Copy list copying files.
-    For idxFile = 0 To lstToCopy.ListCount - 1
-        ' Copy the file.
-        CopyFile lstToCopy.List(idxFile), txtSource.Text, txtDestination.Text, _
+    While lstToCopy.ListCount > 0
+        ' Copy the file
+        CopyFile lstToCopy.List(0), txtSource.Text, txtDestination.Text, _
             chkPreserveStructure
+        
+        ' Remove the copied file from the list and count.
+        lstToCopy.RemoveItem 0
         numCopied = numCopied + 1
-    Next
+    Wend
     
     ' Finished message.
     MsgBox "Copied" & Str(numCopied) & " files to " & txtDestination.Text, _
@@ -378,7 +380,7 @@ End Sub
 
 ' Move all the items from the To Copy list to the Found list.
 Private Sub cmdRemoveAll_Click()
-    Dim i As Integer
+    Dim i As Long
     
     ' Push all the To Copy items to the Found list.
     For i = 0 To lstToCopy.ListCount - 1
