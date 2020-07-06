@@ -9,6 +9,7 @@ Module=modInterfaceUtilities; Modules\modInterfaceUtilities.bas
 Module=modCopying; Modules\modCopying.bas
 IconForm="frmMain"
 Startup="frmMain"
+ExeName32="StashFinder.exe"
 Command32=""
 Name="StashFinder"
 HelpContextID="0"
