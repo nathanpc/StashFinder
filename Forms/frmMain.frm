@@ -221,7 +221,7 @@ Private Sub cmdBrowseSource_Click()
     Dim strPath As String
     
     ' Get the path from the user.
-    strPath = OpenDirectoryDialog(Me.hWnd, "Select the Source Directory")
+    strPath = OpenDirectoryDialog(Me.hwnd, "Select the Source Directory")
     If strPath = "" Then
         Exit Sub
     End If
@@ -234,7 +234,7 @@ Private Sub cmdBrowseDestination_Click()
     Dim strPath As String
     
     ' Get the path from the user.
-    strPath = OpenDirectoryDialog(Me.hWnd, "Select the Destination Directory")
+    strPath = OpenDirectoryDialog(Me.hwnd, "Select the Destination Directory")
     If strPath = "" Then
         Exit Sub
     End If
@@ -256,7 +256,10 @@ Private Sub cmdSearch_Click()
     lstToCopy.Clear
     
     ' Go through the source directory looking for its contents.
-    GetDirectoryContents txtSource.Text
+    GetDirectoryContents txtSource.Text, txtSource.Text
+    
+    ' Make sure the ListBox can display its new contents.
+    AddHorizontalScrollToListBox lstFound
 End Sub
 
 ' Add extensions to the list.
