@@ -122,6 +122,7 @@ Begin VB.Form frmMain
          Left            =   120
          TabIndex        =   8
          Top             =   840
+         Value           =   1  'Checked
          Width           =   1695
       End
       Begin VB.CommandButton cmdBrowseSource 
